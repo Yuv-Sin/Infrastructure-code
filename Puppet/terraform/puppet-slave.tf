@@ -35,19 +35,6 @@ resource "openstack_compute_instance_v2" "ysi-puppet-slave" {
 
   }
 
-  # Authentication in /home/ubuntu/.config/openstack/clouds.yaml
-  provisioner "file" {
-    source      = "/home/ysi/.config"
-    destination = "/home/ubuntu/.config"
-
-    connection {
-      host        = self.access_ip_v4
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = file("~/.ssh/id_ed25519")
-    }
-  }
-
   provisioner "remote-exec" {
     connection {
       host        = self.access_ip_v4
