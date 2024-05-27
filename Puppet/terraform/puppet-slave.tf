@@ -32,6 +32,10 @@ resource "openstack_compute_instance_v2" "ysi-puppet-slave" {
     }
 
     inline = [
+
+      # Configuring ssh file permissions
+      "sudo chmod 0400 /home/ubuntu/.ssh/id_ed25519",
+
       # Installing Puppet
       "curl -LO https://apt.puppet.com/puppet8-release-jammy.deb",
       "sudo dpkg -i ./puppet8-release-jammy.deb",

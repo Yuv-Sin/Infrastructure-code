@@ -57,6 +57,10 @@ resource "openstack_compute_instance_v2" "ysi-puppet-master" {
     }
 
     inline = [
+
+      # Configuring ssh file permissions
+      "sudo chmod 0400 /home/ubuntu/.ssh/id_ed25519",
+
       # Installing Terraform
       "wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg",
       "echo \"deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main\" | sudo tee /etc/apt/sources.list.d/hashicorp.list",
