@@ -13,7 +13,7 @@ provider "openstack" {
 
 resource "openstack_compute_instance_v2" "ysi-puppet-master" {
   name            = "ysi-puppet-master"
-  image_name      = "Ubuntu-22.04-LTS"
+  image_name      = "Ubuntu-24.04-LTS"
   flavor_name     = "C4R6_10G"
   key_pair        = "ysi"
   security_groups = ["sshOslomet"]
