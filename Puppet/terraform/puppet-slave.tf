@@ -1,16 +1,4 @@
 # To be run from localhost machine
-terraform {
-  required_providers {
-    openstack = {
-        source = "terraform-provider-openstack/openstack"
-    }
-  }
-}
-
-provider "openstack" {
-  cloud = "openstack" # defined in ~/.config/openstack/clouds.yaml
-}
-
 resource "openstack_compute_instance_v2" "ysi-puppet-slave" {
   name            = "ysi-puppet-slave"
   image_name      = "Ubuntu-24.04-LTS"
